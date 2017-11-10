@@ -104,6 +104,7 @@ def sign_envelope(envelope, key_file):
 
     security_node = ensure_security_header(doc, queue)
     security_token_node = create_binary_security_token(key_file)
+    queue.push_and_mark(security_token_node)
     signature_node = Signature(
         xmlsec.TransformExclC14N, xmlsec.TransformRsaSha1)
 
